@@ -1,0 +1,61 @@
+<div class="outer_container">
+
+    <div class="big_container">
+      <div class="top_bar">
+        <span>Find Flights</span>
+      </div>
+      <div class="transparent_bg">
+        <div class="container">
+          <div class="search_pane"> 
+            <div class="search_box">
+              <select [(ngModel)]="selectedOrigin">
+                <option value="" disabled selected>from</option>
+                <!-- <option value="nyc" >New York</option>
+                <option value="london" >London</option>
+                <option value="lax" >Los Angeles</option>
+                <option value="chile" >chile</option> -->
+                <option *ngFor="let origin of filteredOriginList; let i=index"
+                value="{{origin.origin}}">
+                  {{origin.origin}}
+                </option>
+              </select>
+            </div>
+            <div class="search_box">
+              <select [(ngModel)]="selectedDestination">
+                <option value="" disabled selected>to</option>
+                <!-- <option value="nyc" >New York</option>
+                <option value="london" >London</option>
+                <option value="lax" >Los Angeles</option>
+                <option value="argentina" >argentina</option> -->
+                <option *ngFor="let dest of filteredDestinationList; let i=index"
+                value="{{dest.destination}}">
+                  {{dest.destination}}
+                </option>
+              </select>
+            </div>
+            <div class="search_box">
+              <button (click)="query()">Go</button>
+            </div>
+          </div>
+          <div class="flight_pane">  
+            <div class="flight_headers">
+              <div class="flight_number cell"> Flight # </div>
+              <div class="departs cell"> Departs </div>
+              <div class="arrives cell"> Arrives </div>
+              <div class="nonstop cell"> Nonstop </div>
+            </div>
+            <!-- pipe  ------ | date : 'shortDate' -->
+            <div *ngFor="let flight of flights" class="flight_results">
+              <div class="flight_number cell"> {{flight.fnumber}}</div>
+              <div class="departs cell"> {{flight.depart}}</div>
+              <div class="arrives cell"> {{flight.arrive}}</div>
+              <div class="nonstop cell"> {{flight.nonstop}}</div>
+            </div>
+            <div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
